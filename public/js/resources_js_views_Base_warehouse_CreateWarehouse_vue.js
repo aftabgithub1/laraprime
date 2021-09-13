@@ -15,6 +15,59 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var primevue_dropdown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! primevue/dropdown */ "./node_modules/primevue/dropdown/index.js");
 /* harmony import */ var primevue_fileupload__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! primevue/fileupload */ "./node_modules/primevue/fileupload/index.js");
 /* harmony import */ var primevue_textarea__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primevue/textarea */ "./node_modules/primevue/textarea/index.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -95,20 +148,6 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       status: true,
-      home: {
-        icon: "pi pi-home",
-        to: "/"
-      },
-      items: [{
-        label: "Base"
-      }, {
-        label: "Warehouse"
-      }, {
-        label: "List Warehouse",
-        to: "/list-warehouse"
-      }, {
-        label: "Create Warehouse"
-      }],
       description: null,
       warehouse: null,
       warehouses: [{
@@ -126,6 +165,64 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         warehouseName: 'Paris',
         code: 'PRS'
+      }],
+      ListWarehouse: [{
+        'id': '1',
+        'title': 'kjsdhflsdhf',
+        'location': 'Dhaka-1211',
+        'desp': 'lkhlkjhlhlkggrt',
+        'status': 'ghdhdfghfhf'
+      }, {
+        'id': '2',
+        'title': 'ghjghjghj',
+        'location': 'Dhaka-1211',
+        'desp': 'lkhlkjhlhlkggrt',
+        'status': 'ghdhdfghfhf'
+      }, {
+        'id': '3',
+        'title': 'hjfghjhjjhkhj',
+        'location': 'Dhaka-1211',
+        'desp': 'lkhlkjhlhlkggrt',
+        'status': 'ghdhdfghfhf'
+      }, {
+        'id': '4',
+        'title': 'hjfghjghjuk',
+        'location': 'Dhaka-1211',
+        'desp': 'lkhlkjhlhlkggrt',
+        'status': 'ghdhdfghfhf'
+      }, {
+        'id': '5',
+        'title': 'uuikmhjd',
+        'location': 'Dhaka-1211',
+        'desp': 'lkhlkjhlhlkggrt',
+        'status': 'ghdhdfghfhf'
+      }, {
+        'id': '6',
+        'title': 'uyikyuye',
+        'location': 'Dhaka-1211',
+        'desp': 'lkhlkjhlhlkggrt',
+        'status': 'ghdhdfghfhf'
+      }, {
+        'id': '7',
+        'title': 'yjyuioyukryu',
+        'location': 'Dhaka-1211',
+        'desp': 'lkhlkjhlhlkggrt',
+        'status': 'ghdhdfghfhf'
+      }],
+      filters: {},
+      selectedTitle: null,
+      editingRows: [],
+      home: {
+        icon: 'pi pi-home',
+        to: '/'
+      },
+      items: [{
+        label: 'Base'
+      }, {
+        label: 'Warehouse'
+      }, // {label: 'Create Warehouse', to:"/create-warehouse"},
+      {
+        label: 'Warehouse List'
       }]
     };
   },
@@ -137,6 +234,12 @@ __webpack_require__.r(__webpack_exports__);
         detail: "File Uploaded",
         life: 3000
       });
+    },
+    onRowEditInit: function onRowEditInit(event) {
+      this.originalRows[event.index] = _objectSpread({}, this.ListWarehouse[event.index]);
+    },
+    onRowEditCancel: function onRowEditCancel(event) {
+      Vue.set(this.ListWarehouse, event.index, this.originalRows[event.index]);
     }
   }
 });
@@ -2367,31 +2470,17 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "p-d-flex p-jc-between p-mb-4" }, [
-        _c("h2", [_vm._v("Create Warehouse")]),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-success" },
-          [
-            _c(
-              "router-link",
-              { staticClass: "text-white", attrs: { to: "/list-warehouse" } },
-              [_vm._v("List Warehouse")]
-            )
-          ],
-          1
-        )
-      ]),
+      _vm._m(0),
       _vm._v(" "),
       _c("Card", {
+        staticClass: "p-mb-5",
         scopedSlots: _vm._u([
           {
             key: "content",
             fn: function() {
               return [
-                _c("div", { staticClass: "p-fluid p-col-6 p-m-auto" }, [
-                  _c("div", { staticClass: "p-field p-col-12 p-mb-4" }, [
+                _c("div", { staticClass: "p-fluid p-formgrid p-grid" }, [
+                  _c("div", { staticClass: "p-field p-col-12 p-md-6 p-mb-5" }, [
                     _c(
                       "span",
                       { staticClass: "p-float-label" },
@@ -2408,7 +2497,7 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "p-field p-col-12 p-mb-5" }, [
+                  _c("div", { staticClass: "p-field p-col-12 p-md-6 p-mb-5" }, [
                     _c(
                       "span",
                       { staticClass: "p-float-label" },
@@ -2417,7 +2506,7 @@ var render = function() {
                           attrs: {
                             id: "dropdown",
                             options: _vm.warehouses,
-                            optionLabel: "warehouseName"
+                            optionLabel: "categoryName"
                           },
                           model: {
                             value: _vm.warehouse,
@@ -2431,20 +2520,20 @@ var render = function() {
                         _c(
                           "label",
                           { attrs: { for: "select_parent_warehouse" } },
-                          [_vm._v("Parent warehouse")]
+                          [_vm._v("Parent Warehouse")]
                         )
                       ],
                       1
                     )
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "p-field p-col-12 p-mb-4" }, [
+                  _c("div", { staticClass: "p-field p-col-12 p-md-6 p-mb-5" }, [
                     _c(
                       "span",
                       { staticClass: "p-float-label" },
                       [
                         _c("Textarea", {
-                          attrs: { autoResize: true, rows: "5" },
+                          attrs: { rows: "1", cols: "30" },
                           model: {
                             value: _vm.description,
                             callback: function($$v) {
@@ -2462,41 +2551,48 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "p-field p-grid p-col-12" }, [
-                    _c(
-                      "div",
-                      { staticClass: "p-d-flex p-col-12 p-ai-start" },
-                      [
-                        _c(
-                          "label",
-                          { staticClass: "p-mr-4", attrs: { for: "status" } },
-                          [_vm._v("Status")]
-                        ),
-                        _vm._v(" "),
-                        _c("Checkbox", {
-                          attrs: { binary: true },
-                          model: {
-                            value: _vm.status,
-                            callback: function($$v) {
-                              _vm.status = $$v
-                            },
-                            expression: "status"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _vm.status
-                          ? _c("span", { staticClass: "p-ml-2" }, [
-                              _vm._v("Active")
-                            ])
-                          : _c("span", { staticClass: "p-ml-2" }, [
-                              _vm._v("Inactive ")
-                            ])
-                      ],
-                      1
-                    )
-                  ]),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "p-field p-grid p-col-12 p-md-6 p-ai-top p-mb-2"
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "p-d-flex p-col-12 p-ai-start" },
+                        [
+                          _c(
+                            "label",
+                            { staticClass: "p-mr-4", attrs: { for: "status" } },
+                            [_vm._v("Status")]
+                          ),
+                          _vm._v(" "),
+                          _c("Checkbox", {
+                            attrs: { binary: true },
+                            model: {
+                              value: _vm.status,
+                              callback: function($$v) {
+                                _vm.status = $$v
+                              },
+                              expression: "status"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm.status
+                            ? _c("span", { staticClass: "p-ml-2" }, [
+                                _vm._v("Active")
+                              ])
+                            : _c("span", { staticClass: "p-ml-2" }, [
+                                _vm._v("Inactive ")
+                              ])
+                        ],
+                        1
+                      )
+                    ]
+                  ),
                   _vm._v(" "),
-                  _c("div", { staticClass: "p-field p-grid p-col-12" }, [
+                  _c("div", { staticClass: "p-field p-col-12 p-md-6 p-grid" }, [
                     _c(
                       "div",
                       { staticClass: "p-d-flex p-col-12" },
@@ -2522,17 +2618,245 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "p-field p-col-12 p-md-12" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "form-control btn btn-success",
-                        attrs: { label: "Submit" }
-                      },
-                      [_vm._v("\n            Create\n          ")]
-                    )
-                  ])
+                  _c(
+                    "div",
+                    { staticClass: "p-field p-col-12 p-md-6 text-right" },
+                    [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-success",
+                          staticStyle: { width: "150px" },
+                          attrs: { label: "Submit" }
+                        },
+                        [_vm._v("Create")]
+                      )
+                    ]
+                  )
                 ])
+              ]
+            },
+            proxy: true
+          }
+        ])
+      }),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _c("Card", {
+        scopedSlots: _vm._u([
+          {
+            key: "content",
+            fn: function() {
+              return [
+                _c(
+                  "DataTable",
+                  {
+                    attrs: {
+                      value: _vm.ListWarehouse,
+                      paginator: true,
+                      rows: 5,
+                      paginatorTemplate:
+                        "CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown",
+                      rowsPerPageOptions: [5, 10, 20, 50],
+                      currentPageReportTemplate:
+                        "Showing {first} to {last} of {totalRecords}",
+                      filters: _vm.filters,
+                      dataKey: "id",
+                      selection: _vm.selectedTitle,
+                      editingRows: _vm.editingRows,
+                      editMode: "row"
+                    },
+                    on: {
+                      "update:selection": function($event) {
+                        _vm.selectedTitle = $event
+                      },
+                      "update:editingRows": function($event) {
+                        _vm.editingRows = $event
+                      },
+                      "update:editing-rows": function($event) {
+                        _vm.editingRows = $event
+                      },
+                      "row-edit-init": _vm.onRowEditInit,
+                      "row-edit-cancel": _vm.onRowEditCancel
+                    },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "header",
+                        fn: function() {
+                          return [
+                            _c(
+                              "div",
+                              { staticClass: "table-header p-d-flex p-jc-end" },
+                              [
+                                _c(
+                                  "span",
+                                  { staticClass: "p-input-icon-left " },
+                                  [
+                                    _c("i", { staticClass: "pi pi-search" }),
+                                    _vm._v(" "),
+                                    _c("InputText", {
+                                      attrs: { placeholder: "Global Search" },
+                                      model: {
+                                        value: _vm.filters["global"],
+                                        callback: function($$v) {
+                                          _vm.$set(_vm.filters, "global", $$v)
+                                        },
+                                        expression: "filters['global']"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ]
+                            )
+                          ]
+                        },
+                        proxy: true
+                      }
+                    ])
+                  },
+                  [
+                    _vm._v(" "),
+                    _c("Column", {
+                      attrs: {
+                        selectionMode: "multiple",
+                        headerStyle: "width: 3em"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("Column", {
+                      attrs: {
+                        field: "title",
+                        header: "Title",
+                        sortable: true
+                      },
+                      scopedSlots: _vm._u([
+                        {
+                          key: "editor",
+                          fn: function(slotProps) {
+                            return [
+                              _c("InputText", {
+                                attrs: { autofocus: "" },
+                                model: {
+                                  value: slotProps.data[slotProps.column.field],
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      slotProps.data,
+                                      slotProps.column.field,
+                                      $$v
+                                    )
+                                  },
+                                  expression:
+                                    "slotProps.data[slotProps.column.field]"
+                                }
+                              })
+                            ]
+                          }
+                        }
+                      ])
+                    }),
+                    _vm._v(" "),
+                    _c("Column", {
+                      attrs: { field: "location", header: "Location" },
+                      scopedSlots: _vm._u([
+                        {
+                          key: "editor",
+                          fn: function(slotProps) {
+                            return [
+                              _c("InputText", {
+                                model: {
+                                  value: slotProps.data[slotProps.column.field],
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      slotProps.data,
+                                      slotProps.column.field,
+                                      $$v
+                                    )
+                                  },
+                                  expression:
+                                    "slotProps.data[slotProps.column.field]"
+                                }
+                              })
+                            ]
+                          }
+                        }
+                      ])
+                    }),
+                    _vm._v(" "),
+                    _c("Column", {
+                      attrs: {
+                        field: "desp",
+                        header: "Description",
+                        sortable: true
+                      },
+                      scopedSlots: _vm._u([
+                        {
+                          key: "editor",
+                          fn: function(slotProps) {
+                            return [
+                              _c("InputText", {
+                                model: {
+                                  value: slotProps.data[slotProps.column.field],
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      slotProps.data,
+                                      slotProps.column.field,
+                                      $$v
+                                    )
+                                  },
+                                  expression:
+                                    "slotProps.data[slotProps.column.field]"
+                                }
+                              })
+                            ]
+                          }
+                        }
+                      ])
+                    }),
+                    _vm._v(" "),
+                    _c("Column", {
+                      attrs: {
+                        field: "status",
+                        header: "Status",
+                        sortable: true
+                      },
+                      scopedSlots: _vm._u([
+                        {
+                          key: "editor",
+                          fn: function(slotProps) {
+                            return [
+                              _c("InputText", {
+                                model: {
+                                  value: slotProps.data[slotProps.column.field],
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      slotProps.data,
+                                      slotProps.column.field,
+                                      $$v
+                                    )
+                                  },
+                                  expression:
+                                    "slotProps.data[slotProps.column.field]"
+                                }
+                              })
+                            ]
+                          }
+                        }
+                      ])
+                    }),
+                    _vm._v(" "),
+                    _c("Column", {
+                      attrs: {
+                        header: "Action",
+                        rowEditor: true,
+                        headerStyle: "width:7rem",
+                        bodyStyle: "text-align:center"
+                      }
+                    })
+                  ],
+                  1
+                )
               ]
             },
             proxy: true
@@ -2543,7 +2867,24 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "p-d-flex p-jc-between p-mb-4" }, [
+      _c("h2", [_vm._v("Create Warehouse")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "p-d-flex p-jc-between p-mb-4" }, [
+      _c("h2", [_vm._v("Warehouse List")])
+    ])
+  }
+]
 render._withStripped = true
 
 

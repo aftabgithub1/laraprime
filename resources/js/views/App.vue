@@ -98,11 +98,8 @@
 					</a>
 					<ul>
 						<li><router-link to="/create-customer-group"><i class="pi pi-arrow-right"></i>Create Customer Group</router-link></li>
-						<li><router-link to="/list-customer-group"><i class="pi pi-arrow-right"></i>List Customer Group</router-link></li>
 						<li><router-link to="/create-company"><i class="pi pi-arrow-right"></i>Create Company</router-link></li>
-						<li><router-link to="/list-company"><i class="pi pi-arrow-right"></i>List Company</router-link></li>
 						<li><router-link to="/create-branch"><i class="pi pi-arrow-right"></i>Create Branch</router-link></li>
-						<li><router-link to="/list-branch"><i class="pi pi-arrow-right"></i>List Branch</router-link></li>
 					</ul>
 				</li>
 				<li>
@@ -114,9 +111,7 @@
 					</a>
 					<ul>
 						<li><router-link to="/create-category"><i class="pi pi-arrow-right"></i>Create Category</router-link></li>
-						<li><router-link to="/list-category"><i class="pi pi-arrow-right"></i>List Category</router-link></li>
 						<li><router-link to="/create-warehouse"><i class="pi pi-arrow-right"></i>Create Warehouse</router-link></li>
-						<li><router-link to="/list-warehouse"><i class="pi pi-arrow-right"></i>List Warehouse</router-link></li>
 						
 					</ul>
 				</li>

@@ -8,73 +8,73 @@
         <Card>
             <template #content>
                 <div class="p-fluid p-formgrid p-grid">
-                    <div class="p-field p-col-12 p-md-4 p-p-1">
+                    <div class="p-field p-col-12 p-md-4 p-p-1 p-mb-4">
                         <span class="p-float-label">
                             <Calendar id="quotation_date" v-model="icon" :showIcon="true" />
                             <label for="quotation_date">Quotation Date</label>
                         </span>
                     </div>
-                    <div class="p-field p-col-12 p-md-4 p-p-1 p-">
+                    <div class="p-field p-col-12 p-md-4 p-p-1 p-mb-4">
                         <span class="p-float-label">
                             <Dropdown v-model="selectedSuplier" :options="suplier" optionLabel="name" />
                             <label for="buyer_name">Buyer Name</label>
                         </span>
                     </div>
-                    <div class="p-field p-col-12 p-md-4 p-p-1 p-">
+                    <div class="p-field p-col-12 p-md-4 p-p-1 p-mb-4">
                         <span class="p-float-label">
                             <Dropdown v-model="selectedWarehouse" :options="warehouse" optionLabel="name" />
                             <label for="warehouse">Warehouse</label>
                         </span>
                     </div>
-                    <div class="p-field p-col-12 p-md-4 p-p-1 p-">
+                    <div class="p-field p-col-12 p-md-4 p-p-1 p-mb-4">
                         <span class="p-float-label">
                             <InputText id="reference_no" type="text" />
                             <label for="reference_no">Reference No</label>
                         </span>
                     </div>
-                    <div class="p-field p-col-12 p-md-4 p-p-1 p-">
+                    <div class="p-field p-col-12 p-md-4 p-p-1 p-mb-4">
                         <span class="p-float-label">
                             <InputText id="invoice_no" type="text" />
                             <label for="invoice_no">Invoice No</label>
                         </span>
                     </div>
-                    <div class="p-field p-col-12 p-md-4 p-p-1 p-">
+                    <div class="p-field p-col-12 p-md-4 p-p-1 p-mb-4">
                         <span class="p-float-label">
                             <InputText id="quotation_satus" type="text" />
                             <label for="quotation_satus">Quotation Status</label>
                         </span>
                     </div>
-                    <div class="p-field p-col-12 p-md-4 p-p-1 p-">
+                    <div class="p-field p-col-12 p-md-4 p-p-1 p-mb-4">
                         <span class="p-float-label">
                             <InputText id="payment_status" type="text" />
                             <label for="payment_status">Payment Status</label>
                         </span>
                     </div>
-                    <div class="p-field p-col-12 p-md-4 p-p-1 p-">
+                    <div class="p-field p-col-12 p-md-4 p-p-1 p-mb-4">
                         <span class="p-float-label">
                             <InputText id="quotation_by" type="text" />
                             <label for="quotation_by">Quotation By</label>
                         </span>
                     </div>
-                    <div class="p-field p-col-12 p-md-4 p-p-1 p-">
+                    <div class="p-field p-col-12 p-md-4 p-p-1 p-mb-4">
                         <span class="p-float-label">
                             <InputNumber v-model="total_price" />
                             <label for="total_price">Total Price</label>
                         </span>
                     </div>
-                    <div class="p-field p-col-12 p-md-4 p-p-1 p-">
+                    <div class="p-field p-col-12 p-md-4 p-p-1 p-mb-4">
                         <span class="p-float-label">
                             <InputNumber v-model="subtotal_price" />
                             <label for="subtotal_price">Subtotal Price</label>
                         </span>
                     </div>
-                    <div class="p-field p-col-12 p-md-4 p-p-1 p-">
+                    <div class="p-field p-col-12 p-md-4 p-p-1 p-mb-4">
                         <span class="p-float-label">
                             <InputNumber id="minmax-buttons" v-model="total_quantity" mode="decimal" showButtons :min="0" />
                             <label for="total_quantity">Total Quantity</label>
                         </span>
                     </div>
-                    <div class="p-field p-col-12 p-md-4 p-p-1 p-">
+                    <div class="p-field p-col-12 p-md-4 p-p-1 p-mb-4">
                         <span class="p-float-label">
                             <InputNumber id="minmax-buttons" v-model="total_product" mode="decimal" showButtons :min="0" />
                             <label for="total_product">Total Product</label>
@@ -82,7 +82,7 @@
                     </div>
                 </div>
                 
-                <div style="background-color: #f8fafc">
+                <div class="product-box">
                     <div v-for="(quotation, index) in quotations" :key="index" class="p-grid p-ai-end p-p-2">
                         <div class="p-col-3">
                             <label for="product_name">Product Name</label>
@@ -103,12 +103,12 @@
                             <input v-model="quotation.total_price" type="number" name="" id="total_price" class="form-control">
                         </div>
                         <div class="p-col-1">
-                            <input @click="remove(index)" type="button" value="-" class="form-control btn btn-danger">
+                            <button @click="remove(index)" class="btn btn-danger">Delete</button>
                         </div>
                     </div>
                     <div class="p-d-flex p-ai-end p-p-2">
                         <div class="p-col-2">
-                            <input @click="add" type="button" value="+" class="btn btn-success">
+                            <button @click="add" class="btn btn-success">Add another</button>
                         </div>
                     </div>
                 </div>
@@ -265,3 +265,14 @@ export default {
 
 }
 </script>
+
+<style>
+    .product-box {
+        border: 1px solid #a6a6a6;
+        border-radius: 3px;
+        transition: border-color 0.2s;
+    }
+    .product-box:hover {
+        border: 1px solid #111;
+    }
+</style>
